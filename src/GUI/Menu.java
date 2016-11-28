@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package GUI;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 /**
  *
  * @author brunomyrrha
@@ -12,13 +17,17 @@ public class Menu extends javax.swing.JFrame {
     Jogo jogo;
     Creditos creditos;
     Ajuda ajuda;
-    /**
-     * Creates new form Menu
-     */
+    Image imagem;
+    
+    
     public Menu() {
         initComponents();
+        imagem = Toolkit.getDefaultToolkit().createImage("bg.jpg");
     }
-
+  
+    public void paintComponent (Graphics g){
+      g.drawImage(imagem, 0, 0, null);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,12 +41,12 @@ public class Menu extends javax.swing.JFrame {
         botaoNovoJogo = new javax.swing.JToggleButton();
         botaoAjuda = new javax.swing.JToggleButton();
         botaoCredito = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         logoCadeMeuBicho.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logoCadeMeuBicho.setText("Cadê Meu Bicho?(logo)");
 
         botaoNovoJogo.setText("Novo Jogo");
         botaoNovoJogo.addActionListener(new java.awt.event.ActionListener() {
@@ -46,7 +55,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        botaoAjuda.setText("Como Jogar");
+        botaoAjuda.setText("Ajuda");
         botaoAjuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoAjudaActionPerformed(evt);
@@ -60,37 +69,40 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("CADÊ MEU BICHO?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logoCadeMeuBicho)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoNovoJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(77, 77, 77))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logoCadeMeuBicho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botaoAjuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botaoCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(botaoNovoJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logoCadeMeuBicho, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botaoNovoJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botaoCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addComponent(logoCadeMeuBicho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
+                .addComponent(jLabel1)
+                .addGap(51, 51, 51)
+                .addComponent(botaoNovoJogo, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botaoAjuda, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botaoCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -161,6 +173,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JToggleButton botaoAjuda;
     private javax.swing.JToggleButton botaoCredito;
     private javax.swing.JToggleButton botaoNovoJogo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel logoCadeMeuBicho;
     // End of variables declaration//GEN-END:variables
 }
