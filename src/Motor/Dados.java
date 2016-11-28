@@ -15,11 +15,18 @@ public class Dados {
         private final ArrayList <Dica> database = new ArrayList<>();
         private int qtdLinhas = 0;
         
+        String urlOnline = "jdbc:mysql://us-cdbr-azure-central-a.cloudapp.net/cademeubicho";
+        String loginAzure = "bb3f7b5052f129";
+        String senhaAzure = "4881742c";
+        
+        String urlOffline = "jdbc:mysql://127.0.0.1:3306/cademeubicho";
+        String login = "root";
+        String senha = "";
+        
         public Connection Conectar () throws Exception {
-            final String url = "jdbc:mysql://127.0.0.1:3306/cademeubicho";//"jdbc:mysql://us-cdbr-azure-central-a.cloudapp.net/cademeubicho";
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                conexao = DriverManager.getConnection(url,"root","");//"bb3f7b5052f129","4881742c");
+                conexao = DriverManager.getConnection(urlOffline,login,senha);
                 System.out.println("Conexão efetuada com sucesso.");
                 
             }catch (Exception e){
